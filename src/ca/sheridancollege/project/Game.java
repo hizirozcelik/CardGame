@@ -16,6 +16,7 @@ import java.util.ArrayList;
  * @author Sami Haddad Feb 2021
  * @author Hizir Ozcelik Feb 2021
  * @author Paolo Giuliano Feb 2021
+ * @author Liam MacInnis Feb 2021
  */
 public abstract class Game {
 
