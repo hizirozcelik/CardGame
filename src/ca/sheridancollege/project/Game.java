@@ -57,6 +57,6 @@ public abstract class Game {
     /**
      * When the game is over, use this method to declare and display a winning player.
      */
-    public abstract void declareWinner();
+    public abstract void declareWinner(String name);
 
 }//end class
