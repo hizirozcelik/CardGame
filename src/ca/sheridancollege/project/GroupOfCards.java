@@ -5,55 +5,58 @@
  */
 package ca.sheridancollege.project;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import War.RegularPlayingCard;
+import java.util.LinkedList;
 
 /**
- * A concrete class that represents any grouping of cards for a Game. HINT, you might want to subclass this more than
- * once. The group of cards has a maximum size attribute which is flexible for reuse.
+ * A class used to manage and edit groups of cards such as players hands or
+ * the games card pot
  *
- * @author dancye
- * @author Paul Bonenfant Jan 2020
- * @author Sami Haddad Feb 2021
- * @author Hizir Ozcelik Feb 2021
- * @author Paolo Giuliano Feb 2021
- * @author Liam MacInnis Feb 2021
+ * @author Paul Bonenfant Apr 2020
+ * @author Sami Haddad Apr 2021
+ * @author Hizir Ozcelik Apr 2021
+ * @author Paolo Giuliano Apr 2021
+ * @author Liam MacInnis Apr 2021
  */
 public class GroupOfCards {
 
-    //The group of cards, stored in an ArrayList
-    private ArrayList<Card> cards;
-    private int size;//the size of the grouping
-
-    public GroupOfCards(int size) {
-        this.size = size;
+    //The group of cards, stored in an LinkedList
+    private LinkedList<RegularPlayingCard> cards = 
+            new LinkedList<RegularPlayingCard>();
+    
+    public void addToHand(LinkedList<RegularPlayingCard> cards){
+        //Adds a list of cards to the bottom of the deck
+        this.cards.addAll(cards);
     }
-
-    /**
-     * A method that will get the group of cards as an ArrayList
-     *
-     * @return the group of cards.
-     */
-    public ArrayList<Card> getCards() {
-        return cards;
+    
+    public void addToHand(RegularPlayingCard card){
+        //Adds a single card to the bottom of a deck
+        this.cards.add(card);
     }
-
-    public void shuffle() {
-        Collections.shuffle(cards);
+    
+    public RegularPlayingCard draw(){
+        //Draws the top card, removes it from the deck
+        RegularPlayingCard card = cards.get(0);
+        cards.remove(0);
+        return card;
+    }
+    
+    
+    
+    public LinkedList<RegularPlayingCard> getPot(){;
+        //Returns all the cards, used for the pot
+        return this.cards;
+    }
+    
+    public void clearPot(){
+        //Clears the group of cards, used for the pot
+        this.cards.clear();
     }
 
     /**
      * @return the size of the group of cards
      */
     public int getSize() {
-        return size;
+        return cards.size();
     }
-
-    /**
-     * @param size the max size for the group of cards
-     */
-    public void setSize(int size) {
-        this.size = size;
-    }
-
 }//end class
